@@ -1,38 +1,37 @@
 //REQS//
-
 var express        = require('express'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
     mongoose       = require('mongoose'),
+    passport       = require('passport'),
+    session        = require('express-session'),
     port           = 3000 || process.env.PORT,
-    session        = require('express-session'), 
     app            = express();
-    passport       = require('passport');
+//REQS//
 
-//MONGOOSE//
-mongoose.connect('mongodb://localhost/project2');
+//Connect Mongoose to MongoDB//
+mongoose.connect('mongodb://localhost/shelter_app');
 
-
-//static files//
-app.use(express.static('public'));
-
-//REQ Passport for authentication 
+ //Require Passport middleware for user authentication//
 require('./config/passport')(passport);
 
-//REQ body-parser to parse posts//
+//Require Controllers//
+dogController = require('./controllers/dogController');
+usersController  = require('./controllers/usersController');
+
+//Static files//
+app.use(express.static('public'));
+
+//Body Parser//
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Initiate Passport
-app.use(session({ name: 'shelter_auth', secret: 'Hello, my name is Marc' }));
+//Get express to initialize passport per session//
+app.use(session({ name: 'shelter_app', secret: 'marcproject' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Controllers
-shelterController = require('./controllers/shelterController');
-
-
-//method override for req.body 
+//Method override for posting to req.body//
 app.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     var method = req.body._method;
@@ -41,17 +40,18 @@ app.use(methodOverride(function(req, res){
   }
 }));
 
-//route shelter uri w/ controller
-app.use('/shelter', shelterController);
 
-//redirect root to shelter
+//Use controllers and assign routes//
+
+app.use('/dogs', dogController);
+app.use('/users', usersController);
+
+// redirect root to user page
 app.get('/', function(req, res) {
-    res.redirect('/shelter');
+    res.redirect('/users');
 });
 
-
-//Listen
 app.listen(port, function() {
-console.log('Running on port ' + port);
-  
+    console.log('Listening on:' + port);
+   
 });

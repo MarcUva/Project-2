@@ -1,0 +1,60 @@
+<html>
+<head>
+ 
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+ 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<div> 
+
+			<h1>DOGS</h1>
+		</div>
+
+		<main>
+
+			<div></div>
+			<!-- Reference /dogs Route -->
+			<a href="/dogs"><p>All Dogs</p></a>
+			 
+		
+				<!-- Only allow selection upon login -->
+				<% if (!login) { %>
+					<h2>You need to login or signup to continue</h2>
+			  <% } %>
+
+				<% if (!login) { %>
+				<!-- Show Signup form if not logged in -->
+					<h4>Sign up</h4>
+					<form action="/users" method="POST">
+						<input type="text" name="username" placeholder="username">
+						<input type="text" name="email" placeholder="email">
+						<input type="text" name="password" placeholder="password">
+						<input type="submit">
+					</form>
+
+				<br/>
+				<br/>
+					<h4>Log in</h4>
+					<form action="/users/login" method="POST">
+						<input type="text" name="email" placeholder="email">
+						<input type="text" name="password" placeholder="password">
+						<input type="submit">
+					</form>
+
+				</br>
+				</br>
+
+				<% } else { %>
+
+					<a href="/users/logout"><p>Logout</p></a>
+
+				<% } %>
+
+			</div>
+		</main>
+	</div>
+
+</body>
+</html>
