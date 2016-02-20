@@ -5,7 +5,7 @@ var express = require('express'),
 var User    = require('../models/users'),
  Dog        =  require('../models/dogs');
 
-// Render dogs index page by finding Dog model and pass dogs
+// Render dogs index page by finding dogs in Dog model and sending to view
 router.get('/', isLoggedIn, function(req, res) {
     Dog.find(function(err, dogs) {
         res.render('dogs/index.ejs', { dogs: dogs });

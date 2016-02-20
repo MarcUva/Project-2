@@ -37,7 +37,7 @@ router.get('/logout', function(req, res) {
     res.redirect('/users');
 });
 
-// show page foor individual users requires authentication of sign in
+// show page for individual users requires authentication of sign in
 router.get('/:id', isLoggedIn, function(req, res) {
 		// Only when id param matches the user request (and after authentication) -  show user's individual show page.
 		req.params.id == req.user.id ? res.locals.usertrue = true : res.locals.usertrue = false;
@@ -47,8 +47,8 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		});
 });
 
-// saves a new dog in the database w/ req.body contingency to DogSchema
-// push new dog into user's "dog" property - subdocumenting
+// Get the User and define a create new Dog with user's req.body - push that dog to that User
+// Newdog route is subdocumenting of User and Dog Schemas
 router.post('/:id/newdog', function(req, res) {
 	User.findById(req.params.id, function(err, user) {
 		var dog = new Dog(req.body);
