@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 //dogs property of UserSchema requires DogSchema in dogs.js model
 var dogSchema = require('./dogs').schema;
-
+var customerSchema = require('./customers').schema;
 //BCrypt is required for assigning a hashed password upon creation of new User
 var bcrypt = require('bcrypt-nodejs');
 
@@ -14,6 +14,8 @@ var userSchema = mongoose.Schema({
 	password: String,
 	dogs: [dogSchema]
 });
+
+
 
 //generateHash method of User is invoked in our passportconfig: defined by bcrypt hashing functionality
 userSchema.methods.generateHash = function(password) {

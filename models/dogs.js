@@ -7,4 +7,6 @@ var dogSchema = mongoose.Schema({
 	
 })
 
-module.exports = mongoose.model('dogs', dogSchema);
+
+
+module.exports = mongoose.model('Dog', dogSchema);

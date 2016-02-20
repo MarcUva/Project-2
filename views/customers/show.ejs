@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+ 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	
+</head>
+<body>
+	<!-- Individual User  -->
+	<p id="user_id" style="display: none"><%= user.id %></p>
+
+	<div >
+		<div >
+			<h1 >DOGS</h1>
+		</div>
+		<main>
+			<div></div>
+			<div id="control-panel">
+				<!-- Link to all Dogs -->
+					<a href="/dogs"><p>All dogs</p></a>
+				<!-- 	Link back to users -->
+					<a href="/users"><p>Back to users</p></a>
+					 <!-- Individualize page -->
+					<p id="users-title"><%= user.username %>'s dogs</p>
+
+					<% if (usertrue)  { %>
+					<!-- Allow adding of new dog for user -->
+						<p>add a new dog</p>
+						<!-- A form post for each user to for newdog -->
+						<form action="/users/<%= user.id %>/adoptdog" method="POST">
+							<input type="text" name="size" placeholder="name">
+							<input type="text" name="breed" placeholder="breed">
+							 
+							<input type="submit">				
+						</form>
+					<% } %>
+
+						<!-- Div showing each dog of user -->
+					<div >
+						<% for (var i=0; i < user.dogs.length; i++) { %>
+							<div class="dog">
+								<p><%= user.dogs[i].name %></p>
+							</div>
+						<% } %>
+					</div>
+					<!-- Option to delete user -->
+					<% if (usertrue) { %> 
+						<form action="/users/<%= user.id %>" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<button id="delete-button">Delete Self</button>
+						</form>
+					<% } %>
+			</div>
+		</main>
+	</div>
+
+</body>
+</html>

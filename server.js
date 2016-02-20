@@ -18,6 +18,7 @@ require('./config/passport')(passport);
 //Require Controllers//
 dogController = require('./controllers/dogController');
 usersController  = require('./controllers/usersController');
+customerController = require('./controllers/customerController')
 
 //Static files//
 app.use(express.static('public'));
@@ -31,7 +32,7 @@ app.use(session({ name: 'shelter_app', secret: 'marcproject' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Method override for posting to req.body//
+//Method override for posting 
 app.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     var method = req.body._method;
@@ -45,6 +46,7 @@ app.use(methodOverride(function(req, res){
 
 app.use('/dogs', dogController);
 app.use('/users', usersController);
+app.use('/customers', customerController);
 
 // redirect root to user page
 app.get('/', function(req, res) {

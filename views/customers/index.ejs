@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+ 
+</head>
+<body>
+
+	<div >
+		<div >
+			<h1 > DOGS</h1>
+		</div>
+
+		<main>
+			<div></div>
+			<div>
+					<!-- Reference Users Route to show user dogs.. -->
+			
+				<!-- Show every dog of User -->
+				<div id="all-dogs ">
+					<% for (var i=0; i < dogs.length; i++) { %>
+						<div class="dogsclass">
+							<p><%= dogs[i].name %></p>
+						</div>
+					<% } %>
+				</div>
+
+			</div>
+		</main>
+	</div>
+
+</body>
+</html>

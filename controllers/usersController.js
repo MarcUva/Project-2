@@ -4,12 +4,12 @@ var express  = require('express'),
 	//router = express' Router
     router   = express.Router();
 
-//Declare User and Dog variables and require their model
+//Declare variables and require their model
 var User     = require('../models/users'),
     Dog      = require('../models/dogs');
+    Customer = require ('../models/customers')
 
-// User index page requires authentication
-// Render the user's page and pass users object
+//render Users Index page after authentication
 router.get('/', function(req, res) {
 	res.locals.login = req.isAuthenticated();
 	User.find(function(err, users) {
@@ -47,8 +47,8 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		});
 });
 
-// Get the User and define a create new Dog with user's req.body - push that dog to that User
-// Newdog route is subdocumenting of User and Dog Schemas
+// routes the creation of new Dog and pushes it to User dog property to attribute ownership
+// Uses subdocumenting of dogschema
 router.post('/:id/newdog', function(req, res) {
 	User.findById(req.params.id, function(err, user) {
 		var dog = new Dog(req.body);
@@ -60,6 +60,9 @@ router.post('/:id/newdog', function(req, res) {
 		});
 	});
 });
+
+ 
+ 
 
 // Create user w/ our sign-up strategy
 router.post('/', passport.authenticate('local-signup', { 
