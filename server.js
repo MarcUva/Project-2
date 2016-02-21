@@ -18,7 +18,8 @@ require('./config/passport')(passport);
 //Require Controllers//
 dogController = require('./controllers/dogController');
 usersController  = require('./controllers/usersController');
-customerController = require('./controllers/customerController')
+customerController = require('./controllers/customerController');
+homeController = require('./controllers/homeController');
 
 //Static files//
 app.use(express.static('public'));
@@ -47,10 +48,12 @@ app.use(methodOverride(function(req, res){
 app.use('/dogs', dogController);
 app.use('/users', usersController);
 app.use('/customers', customerController);
+app.use('/home', homeController);
+
 
 // redirect root to user page
 app.get('/', function(req, res) {
-    res.redirect('/users');
+    res.redirect('/home');
 });
 
 app.listen(port, function() {

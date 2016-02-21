@@ -9,14 +9,12 @@ var User     = require('../models/users'),
     Dog      = require('../models/dogs'),
     Customer = require('../models/customers');
 
- 
-// INDEX
-router.get('/', function(req, res) {
-	 Dog.find(function(err, dogs) {
-		res.render('customers/index.ejs', { dogs: dogs });
-	});
-});
 
+router.get('/', function(req, res) {
+    Dog.find(function(err, dogs) {
+        res.render('dogs/index.ejs', { dogs: dogs });
+    });
+});
 
 
 

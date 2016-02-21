@@ -20,7 +20,7 @@
 				<!-- Link to all Dogs -->
 					<a href="/dogs"><p>All dogs</p></a>
 				<!-- 	Link back to users -->
-					<a href="/users/"><%= user.id %></a   ><p>Back to users</p></a>
+					<a href="/users"><p>Back to users</p></a>
 					 <!-- Individualize page -->
 					<p id="users-title"><%= user.username %>'s dogs</p>
 
@@ -52,7 +52,7 @@
 								      <span class='field'>Size: </span><%=user.dogs[i].size%><br>
 								 	  <span class='field'>Date Posted: </span><%=user.dogs[i].postingdate%><br>
 								 	   <span class='field'>Status: </span><%=user.dogs[i].status%><br>
-								  	</span><%=user.dogs[i].size%><br>
+								  		 
 								    </p>
 							</div>
 						<% } %>
@@ -60,14 +60,6 @@
 					<!-- Option to delete user -->
 					<% if (usertrue) { %> 
 						<form action="/users/<%= user.id %>" method="POST">
-							<input type="hidden" name="_method" value="DELETE">
-							<button id="delete-button">Delete Self</button>
-						</form>
-					<% } %>
-
-				<% if (usertrue) { %> 
-
-						<a href="/users/<%= user._id %>">show user page><a>
 							<input type="hidden" name="_method" value="DELETE">
 							<button id="delete-button">Delete Self</button>
 						</form>

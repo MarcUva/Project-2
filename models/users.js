@@ -1,12 +1,16 @@
 //Mongoose is required for Schemas
 var mongoose = require('mongoose');
 //dogs property of UserSchema requires DogSchema in dogs.js model
-var dogSchema = require('./dogs').schema;
+ 
+var User = require ('./dogs').schema;
+var Dog = require('./dogs').schema
+var dogSchema = require('./dogs').schema
 var customerSchema = require('./customers').schema;
 //BCrypt is required for assigning a hashed password upon creation of new User
 var bcrypt = require('bcrypt-nodejs');
 
 //User credentials and subdocumenting of dogSchema
+
 var userSchema = mongoose.Schema({
 
 	username: String,
@@ -28,4 +32,8 @@ userSchema.methods.validPassword = function(password) {
 }
 
 //Export User
+
 module.exports = mongoose.model('User', userSchema);
+ 
+ 
+ 

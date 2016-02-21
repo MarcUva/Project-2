@@ -5,7 +5,12 @@ var dogSchema = require('./dogs').schema;
 var userSchema = require('./users').schema;
 
 var customerSchema = mongoose.Schema({
-	dogs: [dogSchema]
+	dog: [dogSchema]
 });
 
 module.exports = mongoose.model('Customer', customerSchema);
+var Dog = mongoose.model('Dog', dogSchema)
+var PublicDog = mongoose.model('Dog', dogSchema);
+module.exports = mongoose.model('Dog', dogSchema);
+ 
+ 

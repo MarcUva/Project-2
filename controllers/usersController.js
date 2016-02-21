@@ -16,6 +16,8 @@ router.get('/', function(req, res) {
 		res.render('users/index.ejs', { users: users });
 	});
 });
+ 
+
 
 // json for all users (for testing)
 router.get('/json', function(req, res) {
@@ -52,6 +54,7 @@ router.get('/:id', isLoggedIn, function(req, res) {
 router.post('/:id/newdog', function(req, res) {
 	User.findById(req.params.id, function(err, user) {
 		var dog = new Dog(req.body);
+		
 		dog.save(function(err, dog) {
 			user.dogs.push(dog);
 			user.save(function(err, user) {
@@ -59,6 +62,12 @@ router.post('/:id/newdog', function(req, res) {
 			});			
 		});
 	});
+});
+
+router.get('/', passport.authenticate('local-signup', { 
+	failureRedirect: '/users' }), function(req, res) {
+    //success redirect goes to show page
+    res.redirect('/users/' + req.user.id);
 });
 
  
@@ -79,24 +88,18 @@ router.post('/login', passport.authenticate('local-login', {
 
 // Allow Deletion for User param and User's Dog
 router.delete('/:id', function(req, res) {
-	console.log('Delete Route');
-	User.findById(req.params.id, function(err, user) {
-		if (user.dogs.length == 0) {
-			user.remove(function(err) {
-				res.redirect('/users');
-			});
-		} else {
-			user.dogs.forEach(function(location) {
-				Location.findOneAndRemove({ _id: dog.id }, function(err) {
-					if (err) console.log(err);
-				});
-			});
-			user.remove(function(err) {
-				res.redirect('/users');
-			});
-		}  
-	});  
-});
+ var userid = req.params.id;
+  User.findById(userid, function(err, data) {
+    for (var i = 0; i < data.dogs.length; i++) {
+      User.findByIdAndRemove(data.dogs[i].id, function(err, data) {
+        console.log(data);
+      });
+    };
+    User.findByIdAndRemove(userid, function(err, data) {
+      res.redirect('/users');
+    })
+  })
+})
 
 //isLoggedin function invoked in show route - checks authentication of user before showing page
 function isLoggedIn(req, res, next) {

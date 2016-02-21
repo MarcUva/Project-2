@@ -1,10 +1,12 @@
 //REQS//
 var express = require('express'),
     router  = express.Router();
-
+var LocalStrategy   = require('passport-local').Strategy;
 var User    = require('../models/users'),
     Dog        =  require('../models/dogs'),
+    PublicDog  =  require('../models/dogs'),
     Customer  = require('../models/customers');
+    passport = require('passport'),
 
 // Render dogs index page after authentication by sending Dog model to view
 router.get('/', isLoggedIn, function(req, res) {
@@ -13,6 +15,21 @@ router.get('/', isLoggedIn, function(req, res) {
     });
 });
 
+
+
+router.delete('/:id', function(req, res) {
+ var userid = req.params.id;
+  User.findById(userid, function(err, data) {
+    for (var i = 0; i < data.dogs.length; i++) {
+      User.findByIdAndRemove(data.dogs[i].id, function(err, data) {
+        console.log(data);
+      });
+    };
+    User.findByIdAndRemove(userid, function(err, data) {
+      res.redirect('/users');
+    })
+  })
+})
  
 //check if user is authenticated
  
