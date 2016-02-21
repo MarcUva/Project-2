@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
  
 
 var dogSchema =  mongoose.Schema({
+
 	name: String,
 	breed: String,
 	size: String,
@@ -10,7 +11,8 @@ var dogSchema =  mongoose.Schema({
 	timeinshelter: Number,
 	postingdate: { type : Date, default: Date.now },
  	urgency: Number,
- 	status: String
+ 	status: String,
+ 	img: String,
  
 })
 

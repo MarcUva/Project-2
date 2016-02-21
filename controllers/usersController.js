@@ -18,13 +18,23 @@ router.get('/', function(req, res) {
 });
  
 
+ 
 
-// json for all users (for testing)
+
+// json for all users  
 router.get('/json', function(req, res) {
 	User.find(function(err, users) {
 		res.send(users);
 	});
 });
+
+//json for all dogs
+router.get("/jsondogs", function(req, res){
+  Dog.find({}, function(err, dogs) {
+    if (err) console.log(err);
+      res.json(dogs);
+  });
+})
 
 // json for specific user 
 router.get('/:id/json', function(req, res) {
@@ -49,6 +59,7 @@ router.get('/:id', isLoggedIn, function(req, res) {
 		});
 });
 
+ 
 // routes the creation of new Dog and pushes it to User dog property to attribute ownership
 // Uses subdocumenting of dogschema
 router.post('/:id/newdog', function(req, res) {
@@ -64,12 +75,7 @@ router.post('/:id/newdog', function(req, res) {
 	});
 });
 
-router.get('/', passport.authenticate('local-signup', { 
-	failureRedirect: '/users' }), function(req, res) {
-    //success redirect goes to show page
-    res.redirect('/users/' + req.user.id);
-});
-
+ 
  
  
 
@@ -81,10 +87,12 @@ router.post('/', passport.authenticate('local-signup', {
 });
 
 // Log user in with Login strategy
+// Log user in with Login strategy
 router.post('/login', passport.authenticate('local-login', { 
 	failureRedirect: '/users' }), function(req, res) {
   	res.redirect('/users/' + req.user.id);
 });
+
 
 // Allow Deletion for User param and User's Dog
 router.delete('/:id', function(req, res) {
@@ -100,6 +108,7 @@ router.delete('/:id', function(req, res) {
     })
   })
 })
+
 
 //isLoggedin function invoked in show route - checks authentication of user before showing page
 function isLoggedIn(req, res, next) {

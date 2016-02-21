@@ -8,9 +8,9 @@ var User    = require('../models/users'),
 
 
    router.get('/', function(req, res) {
-	res.locals.login = req.isAuthenticated();
+
 	User.find(function(err, users) {
-		res.render('users/index.ejs', { users: users });
+	res.render('home/index.ejs', { users: users });
 	});
 });
  

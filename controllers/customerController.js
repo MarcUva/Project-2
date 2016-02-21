@@ -12,7 +12,7 @@ var User     = require('../models/users'),
 
 router.get('/', function(req, res) {
     Dog.find(function(err, dogs) {
-        res.render('dogs/index.ejs', { dogs: dogs });
+        res.render('dogs/show.ejs', { dogs: dogs });
     });
 });
 

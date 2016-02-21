@@ -12,7 +12,7 @@ var bcrypt = require('bcrypt-nodejs');
 //User credentials and subdocumenting of dogSchema
 
 var userSchema = mongoose.Schema({
-
+	
 	username: String,
 	email: String,
 	password: String,

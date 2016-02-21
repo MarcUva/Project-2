@@ -11,7 +11,7 @@ var User    = require('../models/users'),
 // Render dogs index page after authentication by sending Dog model to view
 router.get('/', isLoggedIn, function(req, res) {
     Dog.find(function(err, dogs) {
-        res.render('dogs/index.ejs', { dogs: dogs });
+        res.render('dogs/show.ejs', { dogs: dogs });
     });
 });
 
@@ -32,6 +32,14 @@ router.delete('/:id', function(req, res) {
 })
  
 //check if user is authenticated
+
+router.get("/jsondogs", function(req, res){
+  Dog.find({}, function(err, dogs) {
+    if (err) console.log(err);
+      res.json(dogs);
+  });
+})
+
  
 function isLoggedIn(req, res, next) {
   console.log('isLoggedIn middleware');

@@ -1,0 +1,66 @@
+#dogpic {
+
+    width: 300px; /*set the width or max-width*/
+    height: auto; /*this makes sure to maintain the aspect ratio*/
+}
+
+ html, body {
+height: 100%;
+background:  #E8E8E8 ;
+background-image: url("ein.png");
+background-size: cover; 
+background-repeat: no-repeat;
+vertical-align: center;
+margin: center;
+}
+
+ 
+@font-face {
+    font-family: MyFont;
+    src: url(Chunkfive.otf) format("truetype");
+}
+ 
+
+body{
+  margin-top: 0px;
+}
+  
+#welcome {
+	font-family: MyFont;
+	text-align: center;
+	font-size: 3em;
+	color: black;
+	 text-decoration: none;
+
+ 
+}
+
+#welcome2 {
+	font-family: MyFont;
+	float:right;
+	text-align:left;
+	margin:20px;
+	font-size: 2em;
+	   color: inherit;
+    text-decoration: none;
+
+ 
+}
+
+#welcome3 {
+	font-family: MyFont;
+	float:right;
+	color:black;
+	text-align:left;
+	margin:20px;
+	font-size: 2em;
+	clear: right;
+	   color: inherit;
+    text-decoration: none;
+}
+
+a { color:black;
+	  text-decoration: none;
+}
+
+
