@@ -20,7 +20,7 @@
 				<!-- Link to all Dogs -->
 					<a href="/dogs"><p>All dogs</p></a>
 				<!-- 	Link back to users -->
-					<a href="/users"><p>Back to users</p></a>
+					<a href="/users/"><%= user.id %></a   ><p>Back to users</p></a>
 					 <!-- Individualize page -->
 					<p id="users-title"><%= user.username %>'s dogs</p>
 
@@ -31,7 +31,11 @@
 						<form action="/users/<%= user.id %>/newdog" method="POST">
 							<input type="text" name="name" placeholder="name">
 							<input type="text" name="breed" placeholder="breed">
-							 
+							<input type="text" name="age" placeholder="age in months">
+							<input type="text" name="timeinshelter" placeholder="Months at shelter">
+							<input type="text" name="size" placeholder="Size">
+							<input type="text" name="status" placeholder="Status">
+
 							<input type="submit">				
 						</form>
 					<% } %>
@@ -41,12 +45,29 @@
 						<% for (var i=0; i < user.dogs.length; i++) { %>
 							<div class="dog">
 								<p><%= user.dogs[i].name %></p>
+								   <p>
+								      <span class = 'field'>Name: </span><%=user.dogs[i].name%><br>
+								      Breed: <%=user.dogs[i].breed%><br>
+								      <span class='field'>Age (months): </span><%=user.dogs[i].age%><br>
+								      <span class='field'>Size: </span><%=user.dogs[i].size%><br>
+								 	  <span class='field'>Date Posted: </span><%=user.dogs[i].postingdate%><br>
+								 	   <span class='field'>Status: </span><%=user.dogs[i].status%><br>
+								  	</span><%=user.dogs[i].size%><br>
+								    </p>
 							</div>
 						<% } %>
 					</div>
 					<!-- Option to delete user -->
 					<% if (usertrue) { %> 
 						<form action="/users/<%= user.id %>" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<button id="delete-button">Delete Self</button>
+						</form>
+					<% } %>
+
+				<% if (usertrue) { %> 
+
+						<a href="/users/<%= user._id %>">show user page><a>
 							<input type="hidden" name="_method" value="DELETE">
 							<button id="delete-button">Delete Self</button>
 						</form>

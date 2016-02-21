@@ -36,7 +36,7 @@
 						</form>
 					<% } %>
 
-						<!-- Div showing each dog of user -->
+					 
 					<div >
 						<% for (var i=0; i < user.dogs.length; i++) { %>
 							<div class="dog">
@@ -46,7 +46,7 @@
 					</div>
 					<!-- Option to delete user -->
 					<% if (usertrue) { %> 
-						<form action="/users/<%= user.id %>" method="POST">
+						<form action="/customers/<%= user.id %>" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<button id="delete-button">Delete Self</button>
 						</form>
