@@ -5,12 +5,14 @@
 </head>
 	<title></title>
   <body>
+ <h4 id = "prioritybutton"> <a href="/prioritizer" class="button">Prioritize!</a><h4>
  <p> Every dog in the database, sorted by posting date<p>
-			
+			 	<div id = "sortbypriority">
 					<% for (var i=0; i < dogs.length; i++) { %>
 					 <br>Name: <%=dogs[i].name%><br>
 					 <br>Date Posted: <%=dogs[i].postingdate%><br>
 					<a href="/dogs/<%=dogs[i]._id%>"> <img id="dogpic2" img src="<%=dogs[i].img %>"</img></a>
 					 <% } %>
+					 <div>
 </body>
 </html>

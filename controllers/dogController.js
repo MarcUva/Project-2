@@ -15,6 +15,15 @@ router.get('/', isLoggedIn, function(req, res) {
     });
 });
 
+ 
+router.get('/:id', function(req, res) {
+ 
+ 
+    Dog.findById(req.params.id, function(err, dogs) {
+      res.render('dogs/perdog.ejs', { dogs: dogs });
+    });
+});
+
 
 
 router.delete('/:id', function(req, res) {

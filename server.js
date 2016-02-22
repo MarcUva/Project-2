@@ -20,6 +20,7 @@ dogController = require('./controllers/dogController');
 usersController  = require('./controllers/usersController');
 customerController = require('./controllers/customerController');
 homeController = require('./controllers/homeController');
+prioritizerController = require('./controllers/prioritizerController');
 
 //Static files//
 app.use(express.static('public'));
@@ -49,6 +50,7 @@ app.use('/dogs', dogController);
 app.use('/users', usersController);
 app.use('/customers', customerController);
 app.use('/home', homeController);
+app.use('/prioritizer', prioritizerController);
 
 
 // redirect root to user page

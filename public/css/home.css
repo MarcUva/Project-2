@@ -10,6 +10,11 @@ body {
     height: auto; 
 }
 
+#dogpic2 {
+
+    width: 300px;
+    height: auto; 
+}
  #containerhome {
  width:90%;
  height: 90%;
@@ -78,7 +83,17 @@ body {
     text-decoration: none;
 }
 
- 
+ #welcome4 {
+	font-family: MyFont;
+
+	color:black;
+	text-align:right;
+	
+	font-size: 2em;
+	clear: right;
+	color: inherit;
+    text-decoration: none;
+}
 
 #choicebox {
 border-radius: 50px 50px 50px 50px;
@@ -112,33 +127,33 @@ border-radius: 13px;
  
 	height:90%;
 	width:90%;
-	.box{
+	 
     position: relative;
     overflow: hidden;
 }
 
-
-
-.containerhome    {
-    background: yellow;
-    height: 300px;    
-    position: absolute; 
-    top: 0;
-    left: -500px;    
-    width: 500px;
-    opacity: 1;    
-    -webkit-transition: all 0.7s ease-out;
-       -moz-transition: all 0.7s ease-out;
-        -ms-transition: all 0.7s ease-out;
-         -o-transition: all 0.7s ease-out;
-            transition: all 0.7s ease-out;
-
+#dogpage {
+	margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
 }
 
  
- body {
-  padding: 30px;
-}
+  
+ #prioritizerbutton {	font-family: MyFont;
 
+	color:black;
+	text-align:right;
+	
+	font-size: 2em;
+	clear: right;
+	 color: inherit;
+    text-decoration: none;
+
+ }
+#sortbypriority {
+	
+}
 
     

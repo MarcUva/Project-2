@@ -13,13 +13,11 @@ var dogSchema =  mongoose.Schema({
  	urgency: Number,
  	status: String,
  	img: String,
+ 	comments:String,
  
 })
 
-
-
-
-
+ 
 module.exports = mongoose.model('Dog', dogSchema);
  
  

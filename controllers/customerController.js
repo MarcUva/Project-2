@@ -16,6 +16,12 @@ router.get('/', function(req, res) {
     });
 });
 
+// router.get('/:id', function(req, res){
+//   Dogs.findById(req.params.id, function(err, dogs){
+//     res.render('dogs/perdog.ejs',dogs);
+//   })
+// });
+ 
 
 
 module.exports = router;
