@@ -21,13 +21,18 @@ var User     = require('../models/users'),
 //         res.send(err);
 //     res.json(dogs);
 // // });
-router.get('/', function(req, res){
+// router.get('/', function(req, res){
 
-Dog.find({age: 2}, function(err, dogs){
-    res.render('dogs/prioritizer.ejs', { dogs: dogs });
+// Dog.find({age: {$gte: 2}}, function(err, dogs){
+//     res.render('dogs/prioritizer.ejs', { dogs: dogs });
+//     });
+// })
+
+    router.get('/', function(req, res) {
+    Dog.find().sort({ age: 1 }).exec(function(err, dogs) {
+        res.render('dogs/prioritizer.ejs', { dogs: dogs });
     });
-})
-
+});
 
     module.exports = router;
 
