@@ -1,0 +1,24 @@
+<html>
+<main>
+
+	 
+
+
+ 
+
+<% for (var i=0; i < user.dogs.length; i++) { %>
+				<form action="/<%= user.dogs[i].id%>?_method=PUT" method="POST">
+					<strong>Name:</strong><br>
+				<input type="text" name="name" value="<%= user.dogs[i].name %>"><br><br>			
+		<form action="/<%= user.dogs[i].id%>?_method=PUT" method="POST">
+							 	<input type="text" name="name" value="<%= user.dogs[i].name %>"><br><br>			
+		<form action="/<%= user.dogs[i].id%>?_method=PUT" method="POST">
+								  			<button>SUBMIT</button>
+		</form> 
+								    </p>
+						 
+						<% } %>
+
+
+</html>
+

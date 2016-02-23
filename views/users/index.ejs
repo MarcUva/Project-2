@@ -14,6 +14,7 @@
 				<% if (!login) { %>
 				
 					<h2>Sign up to catalogue your dogs!</h2>
+					<a href="/home"><p>Home</p></a>
 			  <% } %>
 
 				<% if (!login) { %>
@@ -26,7 +27,7 @@
 						<input type="text" name="password" placeholder="password">
 						<input type="submit">
 					</form>
-
+			 
 				<br/>
 				<br/>
 					<h4>Log in</h4>
@@ -34,7 +35,7 @@
 						<input type="text" name="email" placeholder="email">
 						<input type="text" name="password" placeholder="password">
 						<input type="submit">
-					 
+					
 					</form>
 			 
 
@@ -44,6 +45,7 @@
 				<% } else { %>
 
 					<a href="/users/logout"><p>Logout</p></a>
+
 
 				<% } %>
 		 

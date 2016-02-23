@@ -14,13 +14,14 @@
 				<!-- Link to all Dogs -->
 					<a href="/dogs"><p>All dogs</p></a>
 				<!-- 	Link back to users -->
-					<a href="/users"><p>Back to users</p></a>
-					 <!-- Individualize page -->
+				
 					
 
 					<% if (usertrue)  { %>
+
+						<a href="/users/logout"><p>Logout</p></a>
 					<!-- Allow adding of new dog for user -->
-						
+		                <a href="/home"><p>Back to home</p></a>
 						<!-- A form post for each user to for newdog -->
 						<form action="/users/<%= user.id %>/newdog" method="POST">
 							<input type="text" name="name" placeholder="name">
@@ -28,6 +29,7 @@
 							<input type="text" name="age" placeholder="age in months">
 							<input type="text" name="timeinshelter" placeholder="Months at shelter">
 							<input type="text" name="size" placeholder="Size">
+							<input type="text" name="home" placeholder="status">
 							<input type="text" name="status" placeholder="Status">
 							<input type="text" name="img" placeholder="Image">
 
@@ -44,12 +46,12 @@
 								   <p>
 								      <span class = 'dogclass'>Name: </span><%=user.dogs[i].name%><br>
 								     <span class = 'dogclass'></span><%=user.dogs[i].img%><br>
-								     <a href=> <img id="dogpic" img src="<%= user.dogs[i].img %>"></a>
+								     <a href="<%= user.dogs[i].dogs%>"> <img id="dogpic" img src="<%= user.dogs[i].img %>"></a>
 								      Breed: <%=user.dogs[i].breed%><br>
 								      <span class='dogclass'>Age (months): </span><%=user.dogs[i].age%><br>
 								      <span class='dogclass'>Size: </span><%=user.dogs[i].size%><br>
 								 	  <span class='dogclass'>Date Posted: </span><%=user.dogs[i].postingdate%><br>
-								 	   <span class='dogclass'>Status: </span><%=user.dogs[i].status%><br>
+								 	  <span class='dogclass'>Status: </span><%=user.dogs[i].home%><br>
 								  		 
 								    </p>
 						 
@@ -60,7 +62,11 @@
 						<form action="/users/<%= user.id %>" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<button id="delete-button">Delete Self</button>
+						<form action="/users/<%= user.id %>" method="POST">
+							<input type="hidden" name="_method" value="PUT">
+							<button id="delete-button">EDIT Self</button>
 						</form>
+
 					<% } %>
 			 
 		</main>
