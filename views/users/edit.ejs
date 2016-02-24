@@ -1,24 +1,43 @@
-<html>
-<main>
-
-	 
-
-
  
 
+				
+
 <% for (var i=0; i < user.dogs.length; i++) { %>
-				<form action="/<%= user.dogs[i].id%>?_method=PUT" method="POST">
+			<form action="/users/<%= user.id %>/edit?_method=PUT" method="POST">
+			 
 					<strong>Name:</strong><br>
 				<input type="text" name="name" value="<%= user.dogs[i].name %>"><br><br>			
-		<form action="/<%= user.dogs[i].id%>?_method=PUT" method="POST">
-							 	<input type="text" name="name" value="<%= user.dogs[i].name %>"><br><br>			
-		<form action="/<%= user.dogs[i].id%>?_method=PUT" method="POST">
+		 			<strong>Breed:</strong><br>
+			   <input type="text" name="breed" value="<%= user.dogs[i].breed %>"><br><br>
+			    		<strong>Size:</strong><br>
+			    <input type="text" name="size" value="<%= user.dogs[i].size %>"><br><br>	
+			      	<strong>Age:</strong><br>
+			       <input type="text" name="age" value="<%= user.dogs[i].age %>"><br><br>		
+			       <strong>Time your dog has been living in your shelter (in months):</strong><br>
+			         <input type="text" name="timeinshelter" value="<%= user.dogs[i].timeinshelter %>"><br><br>	
+			              <strong>Location:</strong><br>
+
+			                   <input type="text" name="location" value="<%= user.dogs[i].location %>"><br><br>	
+			                       <strong>Condition:</strong><br>
+			                       <input type="text" name="condition" value="<%= user.dogs[i].condition %>"><br><br>	<strong>Image:</strong><br>
+			                         <input type="text" name="img" value="<%= user.dogs[i].img %>"><br><br>	
+			                         	<strong>Comments:</strong><br>
+			                          <input type="text" name="comments" value="<%= user.dogs[i].comments %>"><br><br>
+			                            	<strong>Contact Info:</strong><br>
+			                           <input type="text" name="contactinfo" value="<%= user.dogs[i].contactinfo %>"><br><br>
+			                            <strong>Home:</strong><br>
+			                            <input type="text" name="home" value="<%= user.dogs[i].home %>"><br><br>
+	 
 								  			<button>SUBMIT</button>
 		</form> 
 								    </p>
 						 
 						<% } %>
 
+  
+ 
 
+	 
+ 
+		 
 </html>
-
